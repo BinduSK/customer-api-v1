@@ -54,4 +54,11 @@ public class CustomerServiceImpl implements CustomerService {
                 customerRepository.save(existingCustomer);
                 return existingCustomer;
     }
+
+    @Override
+    public void deleteEmployee(Integer id) {
+        //check whether customer exist in DB or not
+        customerRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Customer1","Id",id));
+        customerRepository.deleteById(id);
+    }
 }

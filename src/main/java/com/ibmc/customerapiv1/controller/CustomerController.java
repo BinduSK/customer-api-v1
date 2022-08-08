@@ -35,4 +35,10 @@ public class CustomerController {
     public ResponseEntity<Customer1> updateCustomer(@PathVariable("id") Integer id,@RequestBody Customer1 customer1){
         return new ResponseEntity<Customer1>(customerService.updateCustomer(customer1,id),HttpStatus.OK);
     }
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable("id") Integer id){
+        //delete customer from DB
+        customerService.deleteEmployee(id);
+        return new ResponseEntity<String>("Customer deleted succesfully!",HttpStatus.OK);
+    }
 }
